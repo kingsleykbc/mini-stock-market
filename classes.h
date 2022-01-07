@@ -34,18 +34,18 @@ class Order {
   string executionText(bool unexecuted = false) const;
 };
 
-// TRADE/MATCH
-class Trade {
- public:
-  Trade(const Order& bo, const Order& so);
+// // TRADE/MATCH
+// class Trade {
+//  public:
+//   Trade(const Order& bo, const Order& so);
 
-  // Order pair
-  const Order& buyOrder;
-  const Order& sellOrder;
+//   // Order pair
+//   const Order& buyOrder;
+//   const Order& sellOrder;
 
-  // Execution price
-  float executionPrice;
+//   // Execution price
+//   float executionPrice;
 
-  // Execution text (basically returning the execution text of the pair)
-  string executionText();
-};
+//   // Execution text (basically returning the execution text of the pair)
+//   string executionText();
+// };

@@ -10,9 +10,13 @@ int main(int argc, char* argv[]) {
   // Initialize state variables
   int counter = 0;
   int newOrdersStartPos;
+  int lastTradingPrice;
   map<int, Order> pendingOrders;
 
   // Import and read files
+  for (int i = 0; i < 10; i++) {  // Dummy loop (replace with the read line loop)
+    
+  }
 
   /**
    * TODO
@@ -42,13 +46,34 @@ int main(int argc, char* argv[]) {
    *  - Start at pendingList[newOrderStartPos] to pendingList.end()
    *    - Do all of the above
    *      - (But in this loop, constantly update the iterator to it loops through any further created
-   * remainder inputs)
+   *        remainder inputs) (See example below on how to update map while iterating)
+   *
+   * Print the unexecuted Orders
+   *  - Loop through the pendingList (which currently holds the unexecuted orders) and print
+   * Order.executionString(unexecuted = true)
+   *
    *
    * - https://stackoverflow.com/questions/8234779/how-to-remove-from-a-map-while-iterating-it
    * -
    * https://stackoverflow.com/questions/26766136/how-to-get-min-or-max-element-in-a-vector-of-objects-in-c-based-on-some-field
    *
    */
+
+  // EXAMPLE OF HOW TO MODIFY/RESIZE MAP DURING ITERATION
+  // map<int, string> myMap;
+  // myMap[1] = "Apple";
+  // myMap[2] = "Beach";
+  // myMap[3] = "Cat";
+  // myMap[4] = "Drink";
+
+  // for (auto it = myMap.cbegin(); it != myMap.cend();) {
+  //   if (it->first == 2) {
+  //     it = myMap.erase(it);
+  //     myMap[5] = "New";
+  //   }
+  //   cout << it->first << ": " << it->second << endl;
+  //   ++it;
+  // }
 
   return 0;
 }

@@ -47,18 +47,18 @@ string Order::executionText(bool unexecuted) const {
 // ========================================================================================================================================
 //    TRADE
 // ========================================================================================================================================
-/**
- * @brief Construct a new Trade object and initialized the order pair
- *
- * @param bo - Buy order
- * @param so - Sell order
- */
-Trade::Trade(const Order& bo, const Order& so) : buyOrder(bo), sellOrder(so) {}
+// /**
+//  * @brief Construct a new Trade object and initialized the order pair
+//  *
+//  * @param bo - Buy order
+//  * @param so - Sell order
+//  */
+// Trade::Trade(const Order& bo, const Order& so) : buyOrder(bo), sellOrder(so) {}
 
-/**
- * @brief Return execution string of the order pair, simply by returning the execution string of the
- * trade pair.
- *
- * @return Execution string of the pair
- */
-string Trade::executionText() { return buyOrder.executionText() + "\n" + sellOrder.executionText(); }
+// /**
+//  * @brief Return execution string of the order pair, simply by returning the execution string of the
+//  * trade pair.
+//  *
+//  * @return Execution string of the pair
+//  */
+// string Trade::executionText() { return buyOrder.executionText() + "\n" + sellOrder.executionText(); }
