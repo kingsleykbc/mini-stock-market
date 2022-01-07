@@ -6,46 +6,51 @@ class Order {
  public:
   Order(string orderInputStr, int arrivalTime);
 
-  // Arrival time (represented with integer (typically the counter variable))
-  const int arrivalTime;
+  Order(int arrivalTime, string id, string type, string marketType, bool isDivisible, int quantity, float targetPrice = -1);
+
+  // Arrival time (represents ordered ID) (represented with integer (typically the counter variable))
+  int arrivalTime;
 
   // Order ID
-  const string id;
+  string id;
 
   // Order Type ("B" (buying) or "S" (selling))
-  const string type;
+  string type;
 
-  // Market Type
-  const string marketType;
+  // Market Type ("M" (Market) or "L" (limit))
+  string marketType;
 
   // Divisibility
-  const bool isDivisible;
+  bool isDivisible;
 
   // Target price (For limit orders only)
-  const float targetPrice;
+  float targetPrice = -1;
 
   // Quantity
-  const int quantity;
+  int quantity;
 
   // Pending Text (for printing to the console) e.g. "ord002 4.50     50"
-  string pendingText() const;
+  string pendingText();
 
   // Execution Text (for printing to the output file and execution alert)
-  string executionText(bool unexecuted = false) const;
+  string executionText(float executionPrice, bool unexecuted = false);
+
+  // Either write second cosntructor to create orders from parameters e.g. Order(int arrivalTime, string type,
+  // float orice...)
 };
 
-// // TRADE/MATCH
-// class Trade {
-//  public:
-//   Trade(const Order& bo, const Order& so);
+// TRADE/MATCH
+class Trade {
+ public:
+  Trade(Order& o1, Order& o2);
 
-//   // Order pair
-//   const Order& buyOrder;
-//   const Order& sellOrder;
+  // Order pair
+  Order& buyOrder;
+  Order& sellOrder;
 
-//   // Execution price
-//   float executionPrice;
+  // Execution price
+  float executionPrice;
 
-//   // Execution text (basically returning the execution text of the pair)
-//   string executionText();
-// };
+  // Execution text (basically returning the execution text of the pair)
+  string executionText();
+};
