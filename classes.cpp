@@ -22,13 +22,15 @@ Order::Order(string orderInputStr, int arrivalTime) {
 
 /**
  * @brief Initialize the order.
- * This constructor takes a line of the order input string and initializes the data members.
- *
- * @param orderInputStr order input string e.g. "ord001 B L I 4.25 100"
- * @param arrivalTime Arrival time represented by int. (preferably the counter var from the loop)
+ * This constructor initializes an order with its values
  */
-Order::Order(int aT, string orderID, string t, string mT, bool div, int qty, float price = -1)
+Order::Order(int aT, string orderID, string t, string mT, bool div, int qty, float price)
     : arrivalTime(aT), id(orderID), type(t), isDivisible(div), targetPrice(price), quantity(qty) {}
+
+/**
+ * @brief Initialize a null order.
+ */
+Order::Order() : isNull(true) {}
 
 /**
  * @brief Return the pending text string.
@@ -49,7 +51,7 @@ string Order::pendingText() {
  * unexecuted")
  * @return Execution string. e.g. "order ord001 100 shares purchased at price 4.25"
  */
-string Order::executionText(float executionPrice, bool unexecuted = false) {
+string Order::executionText(float executionPrice, bool unexecuted) {
   // TODO: IMPLEMENT ME
   return "--";
 }

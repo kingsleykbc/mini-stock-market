@@ -1,6 +1,5 @@
 #include <iostream>
 #include <map>
-#include <optional>
 #include <vector>
 
 #include "classes.h"
@@ -22,11 +21,11 @@ int main(int argc, char* argv[]) {
     printPendingOrders(pendingOrders, it);
 
     // Find ma newly added order <FoundMatch?, Remainder?>
-    pair<optional<Order>, optional<Order>> match = findMatch(pendingOrders, it, counter);
+    pair<Order, Order> match = findMatch(pendingOrders, it, counter);
 
     // If match found
-    if (match.first) {
-      Trade trade = handleMatch(pendingOrders, it, match.first.value(), lastTradingPrice, match.second);
+    if (!match.first.isNull) {
+      Trade trade = handleMatch(pendingOrders, it, match.first, lastTradingPrice, match.second);
       printAndWriteExecution(trade, output);
     }
 
@@ -42,9 +41,9 @@ int main(int argc, char* argv[]) {
 
 /**
  * TODO
- * 
+ *
  * 1. Loop through input file and initialize the pending list
- * 
+ *
  * 2. Loop through the list
  *  - (All searches and prints are done from index 0 - index of current iterator)
  *  - printPendingOrders()
@@ -79,7 +78,6 @@ int main(int argc, char* argv[]) {
  * https://stackoverflow.com/questions/8234779/how-to-remove-from-a-map-while-iterating-it Writing lambdas
  * for searching containers:
  * https://stackoverflow.com/questions/26766136/how-to-get-min-or-max-element-in-a-vector-of-objects-in-c-based-on-some-field
- * Optional Return value:  https://www.youtube.com/watch?v=UAAiwObNhQ0&ab_channel=TheCherno
  */
 
 // EXAMPLE OF HOW TO MODIFY/RESIZE MAP DURING ITERATION
@@ -89,7 +87,7 @@ int main(int argc, char* argv[]) {
 // myMap[3] = "Cat";
 // myMap[4] = "Drink";
 
-// for (auto it2 = myMap.cbegin(); it2 != myMap.cend();) {
+// for (auto it = myMap.cbegin(); it != myMap.cend();) {
 //   if (it->first == 2) {
 //     it = myMap.erase(it);
 //     myMap[5] = "New";

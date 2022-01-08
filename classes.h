@@ -1,12 +1,23 @@
+#pragma once
+
 #include <string>
 using namespace std;
 
 // ORDER
 class Order {
  public:
+  // Initialized form input string
   Order(string orderInputStr, int arrivalTime);
 
-  Order(int arrivalTime, string id, string type, string marketType, bool isDivisible, int quantity, float targetPrice = -1);
+  // Initialized from values
+  Order(int arrivalTime, string id, string type, string marketType, bool isDivisible, int quantity,
+        float targetPrice = -1);
+
+  // Null object
+  Order();
+
+  // Null order (Because C++ doesn't allow NULL objects and std::optional only works for verison 17+)
+  bool isNull = false;
 
   // Arrival time (represents ordered ID) (represented with integer (typically the counter variable))
   int arrivalTime;
@@ -23,7 +34,7 @@ class Order {
   // Divisibility
   bool isDivisible;
 
-  // Target price (For limit orders only)
+  // Target price (For limit orders only. -1 means it is uninitialized)
   float targetPrice = -1;
 
   // Quantity

@@ -2,10 +2,10 @@
 
 #include <iostream>
 #include <map>
-#include <optional>
 #include <vector>
 
 #include "classes.h"
+
 using namespace std;
 
 // ======================================================================================================= //
@@ -19,7 +19,7 @@ pair<float, map<int, Order>> getData(string filename) {
   map<int, Order> pendingOrders;
   int counter;
 
-  // IMPLEMENT ME
+  // TODO: IMPLEMENT ME
 
   // The code below is just a guide, you can replace with anything else
 
@@ -46,17 +46,19 @@ pair<float, map<int, Order>> getData(string filename) {
 // PRINT PENDING ORDERS
 
 void printPendingOrders(map<int, Order> pendingOrders, map<int, Order>::iterator orderIterator) {
-  // IMPLEMENT ME
+  // TODO: IMPLEMENT ME
 }
 
 // FIND MATCH FOR TARGET ORDER
 
-pair<optional<Order>, optional<Order>> findMatch(map<int, Order> pendingOrders,
-                                                 map<int, Order>::iterator orderIterator, int& counter) {
-  optional<Order> matchedOrder = {};    // The found order
-  optional<Order> remainderOrder = {};  // A new remainder order (if it matched with a divisible order)
+pair<Order, Order> findMatch(map<int, Order> pendingOrders, map<int, Order>::iterator orderIterator,
+                             int& counter) {
+  // Initialize both to null orders
+  Order matchedOrder = Order();    // The found order
+  Order remainderOrder = Order();  // A new remainder order (if it matched with a divisible order)
 
-  // IMPLEMEMT ME
+  // TODO: IMPLEMEMT ME
+
   /**
    * use find_if to filter out all the invalid orders
    *  - remove all orders of the same type (where order.type == secondOrder.type)
@@ -131,22 +133,28 @@ pair<optional<Order>, optional<Order>> findMatch(map<int, Order> pendingOrders,
 // HANDLE MATCHING
 
 Trade handleMatch(map<int, Order>& pendingOrders, map<int, Order>::iterator& targetOrderIterator,
-                  Order foundOrder, float lastTradingPrice, optional<Order> remainder = {}) {
-  // IMPLEMENT ME
+                  Order foundOrder, float lastTradingPrice, Order remainder) {
+  // TODO: IMPLEMENT ME
+
+  // Dummy return
+  Order o1 = Order();
+  Order o2 = Order();
+  return Trade(o1, o2);
 }
 
 // PRINT AND ADD THE EXECUTION MESSAGE
 
 void printAndWriteExecution(Trade trade, string& output) {
-  // IMPLEMENT ME
+  // TODO: IMPLEMENT ME
 
   // String can be gotten by calling trade.executionText()
+  // Add it to the console (with proper formatting) and also to the output string
 }
 
 // PRINT AND ADD THE NON EXECUTED MESSAGE
 
 void printAndWriteNonExecution(map<int, Order> pendingOrders, string& output) {
-  // IMPLEMENT ME
+  // TODO: IMPLEMENT ME
 
   // String can be gotten by calling Order.executionText(0.0, true)
 }
@@ -154,5 +162,5 @@ void printAndWriteNonExecution(map<int, Order> pendingOrders, string& output) {
 // SEND OUTPUT
 
 void sendOutput(string output) {
-  // IMPLEMENT ME
+  // TODO: IMPLEMENT ME
 }

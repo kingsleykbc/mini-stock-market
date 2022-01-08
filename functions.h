@@ -1,6 +1,11 @@
 #pragma once
 
-#include <optional>
+#include "classes.h"
+#include <iostream>
+#include <map>
+#include <vector>
+
+using namespace std;
 
 /**
  * @brief Read file and return data.
@@ -36,10 +41,10 @@ void printPendingOrders(map<int, Order> pendingOrders, map<int, Order>::iterator
  *
  * @param pendingOrders - List of pending orders
  * @param orderIterator - The target order (NOTE: Only search from 0 - orderIterator position)
- * @return pair<optional<Order>, optional<Order>> Matched order (if any) and remainder order (if any)
+ * @return pair<Order, Order> Matched order (if any) and remainder order (if any)
  */
-pair<optional<Order>, optional<Order>> findMatch(map<int, Order> pendingOrders,
-                                                 map<int, Order>::iterator orderIterator, int& counter);
+pair<Order, Order> findMatch(map<int, Order> pendingOrders, map<int, Order>::iterator orderIterator,
+                             int& counter);
 
 /**
  * @brief Implement the matching process
@@ -61,7 +66,7 @@ pair<optional<Order>, optional<Order>> findMatch(map<int, Order> pendingOrders,
  * @return Trade the new trade
  */
 Trade handleMatch(map<int, Order>& pendingOrders, map<int, Order>::iterator& targetOrderIterator,
-                  Order foundOrder, float lastTradingPrice, optional<Order> remainder = {});
+                  Order foundOrder, float lastTradingPrice, Order remainder = {});
 
 /**
  * @brief Print the execution message
@@ -75,22 +80,21 @@ Trade handleMatch(map<int, Order>& pendingOrders, map<int, Order>::iterator& tar
 void printAndWriteExecution(Trade trade, string& output);
 
 /**
- * @brief Print the non executed orders 
- * 
- * This function prints and adds the remaining items in the pendingList as unexecuted. 
- * 
+ * @brief Print the non executed orders
+ *
+ * This function prints and adds the remaining items in the pendingList as unexecuted.
+ *
  * @param pendingOrders - Remaining pending orders
  * @param output - Reference to output string (to allow updating)
  */
 void printAndWriteNonExecution(map<int, Order> pendingOrders, string& output);
 
-
 /**
  * @brief Send output
- * 
+ *
  * This function writes the output string to the "executions.txt" file and handles any formatting or
  * overwriting issues.
- * 
+ *
  * @param output - Output string
  */
 void sendOutput(string output);
