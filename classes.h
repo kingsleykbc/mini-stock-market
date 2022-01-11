@@ -7,20 +7,19 @@ using namespace std;
 class Order {
  public:
   // Initialized form input string
-  Order(string orderInputStr, int arrivalTime);
+  Order(string orderInputStr, float arrivalTime);
 
   // Initialized from values
-  Order(int arrivalTime, string id, string type, string marketType, bool isDivisible, int quantity,
-        float targetPrice = -1);
+  Order(float aT, string orderID, string t, string mT, bool div, int qty, float price);
 
   // Null object
   Order();
 
-  // Null order (Because C++ doesn't allow NULL objects and std::optional only works for verison 17+)
+  // Null order (Because C++ doesn't allow NULL objects and std::optional only works for version 17+)
   bool isNull = false;
 
   // Arrival time (represents ordered ID) (represented with integer (typically the counter variable))
-  int arrivalTime;
+  float arrivalTime;
 
   // Order ID
   string id;
@@ -45,19 +44,16 @@ class Order {
 
   // Execution Text (for printing to the output file and execution alert)
   string executionText(float executionPrice, bool unexecuted = false);
-
-  // Either write second cosntructor to create orders from parameters e.g. Order(int arrivalTime, string type,
-  // float orice...)
 };
 
 // TRADE/MATCH
 class Trade {
  public:
-  Trade(Order& o1, Order& o2);
+  Trade(Order o1, Order o2, float lastTradingPrice);
 
   // Order pair
-  Order& buyOrder;
-  Order& sellOrder;
+  Order buyOrder;
+  Order sellOrder;
 
   // Execution price
   float executionPrice;
@@ -65,3 +61,6 @@ class Trade {
   // Execution text (basically returning the execution text of the pair)
   string executionText();
 };
+
+// HELPER FUNCTION
+string formatPrice(float num);
